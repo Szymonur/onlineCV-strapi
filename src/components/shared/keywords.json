@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_keywords",
+  "info": {
+    "displayName": "keyword",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "keyword": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "integer",
+      "max": 5,
+      "min": 1
+    }
+  }
+}

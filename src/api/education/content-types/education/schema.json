@@ -4,7 +4,7 @@
   "info": {
     "singularName": "education",
     "pluralName": "educations",
-    "displayName": "education",
+    "displayName": "Education",
     "description": ""
   },
   "options": {
@@ -40,7 +40,7 @@
         }
       }
     },
-    "if_additional": {
+    "is_additional": {
       "type": "boolean",
       "pluginOptions": {
         "i18n": {

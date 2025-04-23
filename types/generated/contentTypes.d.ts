@@ -444,6 +444,52 @@ export interface ApiAboutAbout extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'articles';
+  info: {
+    description: '';
+    displayName: 'Articles';
+    pluralName: 'articles';
+    singularName: 'article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    authors: Schema.Attribute.Text;
+    citations: Schema.Attribute.Component<'shared.citations', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    keywords: Schema.Attribute.Component<'shared.keywords', true>;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article.article'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2100;
+          min: 1900;
+        },
+        number
+      >;
+  };
+}
+
 export interface ApiConferenceBanerConferenceBaner
   extends Struct.SingleTypeSchema {
   collectionName: 'conference_baners';
@@ -477,7 +523,7 @@ export interface ApiConferenceConference extends Struct.CollectionTypeSchema {
   collectionName: 'conferences';
   info: {
     description: '';
-    displayName: 'Conference';
+    displayName: 'Conferences';
     pluralName: 'conferences';
     singularName: 'conference';
   };
@@ -570,7 +616,7 @@ export interface ApiEducationEducation extends Struct.CollectionTypeSchema {
   collectionName: 'educations';
   info: {
     description: '';
-    displayName: 'education';
+    displayName: 'Education';
     pluralName: 'educations';
     singularName: 'education';
   };
@@ -598,7 +644,7 @@ export interface ApiEducationEducation extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    if_additional: Schema.Attribute.Boolean &
+    is_additional: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -774,7 +820,7 @@ export interface ApiResearchGrantResearchGrant
   collectionName: 'research_grants';
   info: {
     description: '';
-    displayName: 'Research grant';
+    displayName: 'Research grants';
     pluralName: 'research-grants';
     singularName: 'research-grant';
   };
@@ -1336,6 +1382,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::article.article': ApiArticleArticle;
       'api::conference-baner.conference-baner': ApiConferenceBanerConferenceBaner;
       'api::conference.conference': ApiConferenceConference;
       'api::didactic.didactic': ApiDidacticDidactic;

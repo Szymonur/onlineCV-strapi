@@ -1,5 +1,54 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SharedCitations extends Struct.ComponentSchema {
+  collectionName: 'components_shared_citations';
+  info: {
+    displayName: 'citations';
+  };
+  attributes: {
+    googleScholar: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    scopus: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    webOfScience: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+  };
+}
+
+export interface SharedKeywords extends Struct.ComponentSchema {
+  collectionName: 'components_shared_keywords';
+  info: {
+    description: '';
+    displayName: 'keyword';
+  };
+  attributes: {
+    keyword: Schema.Attribute.String;
+    weight: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -75,6 +124,8 @@ export interface SharedTestDisplayName extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.citations': SharedCitations;
+      'shared.keywords': SharedKeywords;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

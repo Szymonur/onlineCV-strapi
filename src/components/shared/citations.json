@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_citations",
+  "info": {
+    "displayName": "citations"
+  },
+  "options": {},
+  "attributes": {
+    "googleScholar": {
+      "type": "integer",
+      "min": 0
+    },
+    "webOfScience": {
+      "type": "integer",
+      "min": 0
+    },
+    "scopus": {
+      "type": "integer",
+      "min": 0
+    }
+  }
+}

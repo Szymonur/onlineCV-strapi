@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Articles",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "year": {
+      "type": "integer",
+      "max": 2100,
+      "min": 1900
+    },
+    "citations": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.citations"
+    },
+    "keywords": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.keywords"
+    }
+  }
+}
